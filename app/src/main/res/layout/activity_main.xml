@@ -31,8 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#00000000"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/picture_to_be_submitted"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -40,4 +40,23 @@
         android:layout_height="wrap_content"
         android:background="@android:color/background_dark"
         android:text="@string/submit" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/background_dark"
+        android:gravity="center|center_vertical"
+        android:text="@string/logout" />
+
 </LinearLayout>

@@ -38,4 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Login" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/sign_up" />
 </LinearLayout>

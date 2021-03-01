@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -38,8 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private Button btnLogout;
     private File photoFile;
+    private ProgressBar progressBar;
     public String photoFileName = "photo.jpg";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCapture);
         ivPostImage = findViewById((R.id.ivPostImage));
         btnSubmit = findViewById(R.id.btnSubmit);
+        progressBar = findViewById(R.id.pbLoading);
+        btnLogout = findViewById(R.id.btnLogout);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +79,27 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 ParseUser currentUser = getCurrentUser();
-                savePost(description, currentUser, photoFile);
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+                //savePost(description, currentUser, photoFile);
+                progressBar.setVisibility(ProgressBar.INVISIBLE);
             }
         });
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                goLoginActivity();
+                Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void goLoginActivity() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
     }
 
     public void launchCamera() {
