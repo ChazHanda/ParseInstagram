@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://puu.sh/Hl7yO/a1904f8c14.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Video walkthrough](/ParseInstagram.gif)
 
 GIF created with [Sharex](https://getsharex.com/).
 
