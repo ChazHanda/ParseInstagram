@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ParseUser currentUser = getCurrentUser();
                 progressBar.setVisibility(ProgressBar.VISIBLE);
-                //savePost(description, currentUser, photoFile);
+                savePost(description, currentUser, photoFile);
                 progressBar.setVisibility(ProgressBar.INVISIBLE);
             }
         });
