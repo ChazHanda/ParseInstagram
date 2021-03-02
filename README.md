@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video walkthrough](/ParseInstagram.gif)
+![Video walkthrough](/ParseInstagram2.gif)
 
 GIF created with [Sharex](https://getsharex.com/).
 
