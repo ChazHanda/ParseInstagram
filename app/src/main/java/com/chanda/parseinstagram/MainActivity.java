@@ -50,42 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchCamera();
-            }
-        });
 
-        //queryPosts();
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String description = etDescription.getText().toString();
-                if (description.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Description cannot be empty.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (photoFile == null || ivPostImage.getDrawable() == null) {
-                    Toast.makeText(MainActivity.this, "There is no image!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ParseUser currentUser = getCurrentUser();
-                progressBar.setVisibility(ProgressBar.VISIBLE);
-                savePost(description, currentUser, photoFile);
-                progressBar.setVisibility(ProgressBar.INVISIBLE);
-            }
-        });
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                goLoginActivity();
-                Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

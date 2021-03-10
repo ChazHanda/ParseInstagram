@@ -13,8 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.chanda.parseinstagram.MainActivity;
 import com.chanda.parseinstagram.R;
+import com.parse.ParseUser;
+
+import static com.parse.ParseUser.getCurrentUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +31,6 @@ public class ComposeFragment extends Fragment {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
-    private Button btnLogout;
     private ProgressBar progressBar;
 
 
@@ -50,6 +54,36 @@ public class ComposeFragment extends Fragment {
         ivPostImage = view.findViewById((R.id.ivPostImage));
         btnSubmit = view.findViewById(R.id.btnSubmit);
         progressBar = view.findViewById(R.id.pbLoading);
-        btnLogout = view.findViewById(R.id.btnLogout);
+
+        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchCamera();
+            }
+        });
+
+        //queryPosts();
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String description = etDescription.getText().toString();
+                if (description.isEmpty()) {
+                    Toast.makeText(getContext(), "Description cannot be empty.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (photoFile == null || ivPostImage.getDrawable() == null) {
+                    Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                ParseUser currentUser = getCurrentUser();
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+                savePost(description, currentUser, photoFile);
+                progressBar.setVisibility(ProgressBar.INVISIBLE);
+            }
+        });
+
     }
+
+
 }
