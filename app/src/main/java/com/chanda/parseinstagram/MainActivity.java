@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                     default:
-                        Toast.makeText(MainActivity.this, "Logging out.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Logging out.", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }

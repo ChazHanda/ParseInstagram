@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.chanda.parseinstagram.LoginActivity;
 import com.chanda.parseinstagram.MainActivity;
 import com.chanda.parseinstagram.Post;
 import com.chanda.parseinstagram.R;
@@ -51,6 +52,7 @@ public class ComposeFragment extends Fragment {
     private ImageView ivPostImage;
     private Button btnSubmit;
     private ProgressBar progressBar;
+    private Button btnLogout;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -74,6 +76,7 @@ public class ComposeFragment extends Fragment {
         ivPostImage = view.findViewById((R.id.ivPostImage));
         btnSubmit = view.findViewById(R.id.btnSubmit);
         progressBar = view.findViewById(R.id.pbLoading);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +106,14 @@ public class ComposeFragment extends Fragment {
             }
         });
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                goLoginActivity();
+                Toast.makeText(getContext(), "Logged out", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -177,6 +188,10 @@ public class ComposeFragment extends Fragment {
         });
     }
 
+    private void goLoginActivity() {
+        Intent i = new Intent(getContext(), LoginActivity.class);
+        startActivity(i);
+    }
 
 
 }
