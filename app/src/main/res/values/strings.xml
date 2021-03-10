@@ -9,4 +9,6 @@
     <string name="logout">Logout</string>
     <string name="picture_to_be_submitted">Picture to be submitted</string>
     <string name="sign_up">Sign up</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
